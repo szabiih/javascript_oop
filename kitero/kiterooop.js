@@ -19,7 +19,8 @@ class StudentWithWork extends Student{
 
     //  Konstruktor
     constructor(name){
-        super(name);        //  Student.call(this, name); HELYETT   ??
+        //  By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods
+        super(name);        //  Student.call(this, name); HELYETT   -   The super keyword is used to call the constructor of its parent class to access the parent's properties and methods.
         this.workDone = 0;
     }
 
