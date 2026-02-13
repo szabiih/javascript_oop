@@ -1,0 +1,24 @@
+DOLGOZAT A KETTESÉRT xD
+
+- mi az osztály?
+- mi a példányosítás?
+- mi a kapcsolat az osztály és a példány között?
+- mi a higher order function?
+- mit nevezünk callbacknek?
+
+mit ír ki az alábbi program?
+
+const foo = (a,b, callback) => {
+	const c = 1;
+	const result = callback(a,b)+1;
+	return { er:result }
+}
+const result = foo("1", "2", (szam1, szam2) => {return szam1+szam2});
+console.log(result.result);
+console.log(result.er);
+
+- Hogyan módosítaná a programot, hogy short hand property alaklmazásával a visszatérési objektum result tulajdonsága tartalmazza kiszámított eredményt?
+- Hogyan tudná destructurning alkalmazásával létrehozni azt a változót, ami foo függvény visszatérési értékének result tulajdonságát tartalmazza?
+
+Javítsa a programoot, hogy abban az esetben ha a és b paraméter nagyobb 10-nél, akkor az eredmény objektum result tulajdonsága 0 értéket vegyen fel.
+Ha két szám 0 és 10 között van, akkor az eredmény objektum result tulajdonsága a két szám összegét tartalmazza!
