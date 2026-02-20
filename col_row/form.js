@@ -10,12 +10,18 @@ class FormController{
     #formFieldElemList;
 
     /**
+     * @type {HTMLFormElement}
+     */
+    #form;
+
+    /**
      * @param {FormFieldType[]} formFields 
      * @param {Manager} manager 
      */
     constructor(formFields, manager){
         this.#manager = manager;
         const form = document.createElement('form');
+        this.#form = form;
         document.body.appendChild(form);
         this.#formFieldElemList = [];
         for(const formField of formFields){
