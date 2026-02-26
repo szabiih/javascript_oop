@@ -1,5 +1,13 @@
 import './types.js';        //  A types.js-t minden modul külön importálja, hogy ne függjünk más fájloktól és önállóan működjön a típusbetöltés. 
-import {Manager} from './manager.js'
+import {Manager} from './manager.js';
+
+/**
+ * A TableCallback egy JSDoc callback típusdefiníció. A @ callback segítségével egy új, névvel ellátott függvénytípust definiálunk, amely később újrahasználható
+ * @callback TableCallback
+ * @param {HTMLTableSectionElement} tbody
+ * @param {ColspanType | RowspanType} element
+ * @returns {void}
+ */
 
 class Table {
     //                                                      Privát mezők
@@ -19,6 +27,8 @@ class Table {
      * @param {Manager} manager 
      */
     constructor(headerArray, manager){
+        this.#manager = manager;
+
         const table = document.createElement('table');
         document.body.appendChild(table);
 
@@ -37,6 +47,21 @@ class Table {
             }
             tr.appendChild(th);
         }
+
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        this.#tbody = tbody;
+    }
+
+    //                                                      Függvények
+    /**
+     * 
+     * @param {TableCallback} tableCallback 
+     */
+    setAppendRow(tableCallback){
+        this.#manager.addCallback = (element) => {
+            tableCallback(this.#tbody, element);
+        };
     }
 }
 
